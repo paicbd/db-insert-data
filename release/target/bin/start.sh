@@ -1,0 +1,1 @@
+java -jar -Dspring.config.location=../conf/application.properties  insertdata-0.0.1-SNAPSHOT.jar
