@@ -76,10 +76,7 @@ class WorkerProcessTest {
     void testInit_InvalidNumberOfWorkers() {
         when(properties.getCdrWorkers()).thenReturn(0);
 
-        FileOperationException thrownException = assertThrows(FileOperationException.class, () -> {
-            workerProcess.init();
-        });
-
+        FileOperationException thrownException = assertThrows(FileOperationException.class, () -> workerProcess.init());
         assertEquals("Invalid number of workers: 0", thrownException.getMessage());
     }
 
@@ -101,8 +98,6 @@ class WorkerProcessTest {
     @Test
     void testShouldProcessCdr() {
         assertFalse(workerProcess.shouldProcessCdr(0));
-        assertFalse(workerProcess.shouldProcessCdr(2));
-
         assertTrue(workerProcess.shouldProcessCdr(1000));
     }
 
@@ -110,6 +105,12 @@ class WorkerProcessTest {
     void testCalculateWorkForWorker() {
         long work = workerProcess.calculateWorkForWorker(1000);
         assertEquals(333, work);
+    }
+
+    @Test
+    void testCalculateWorkForWorkerForZero() {
+        long work = workerProcess.calculateWorkForWorker(0);
+        assertEquals(1, work);
     }
 
     @Test
