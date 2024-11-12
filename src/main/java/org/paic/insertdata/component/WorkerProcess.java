@@ -13,7 +13,6 @@ import redis.clients.jedis.JedisCluster;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import java.time.Duration;
-import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -22,9 +21,6 @@ import java.util.concurrent.Executors;
 @Component
 @RequiredArgsConstructor
 public class WorkerProcess {
-
-    private static final Set<String> MODES = Set.of("database", "logs", "kafka");
-
     private final JedisCluster jedisCluster;
     private final InsertCdr insertCdr;
     private final AppProperties properties;
@@ -71,11 +67,12 @@ public class WorkerProcess {
 
     public long getCdrLength() {
         log.debug("Getting CDR from Redis");
-        return Math.min(jedisCluster.llen(properties.getCdrListName()), properties.getCdrSmRecordsToTake());
+        long listSize = jedisCluster.llen(properties.getCdrListName());
+        return Math.min(listSize, properties.getCdrSmRecordsToTake());
     }
 
     public boolean shouldProcessCdr(long length) {
-        if (length == 0 || length < properties.getCdrWorkers()) {
+        if (length <= 0) {
             log.debug("No CDR to process");
             return false;
         }
@@ -83,7 +80,8 @@ public class WorkerProcess {
     }
 
     public long calculateWorkForWorker(long length) {
-        return length / properties.getCdrWorkers();
+        long calculated = length / properties.getCdrWorkers();
+        return calculated > 0 ? calculated : 1;
     }
 
     public void processCdr(long workForWorker) {

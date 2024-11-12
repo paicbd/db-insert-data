@@ -49,7 +49,7 @@
         <java.version>21</java.version>
 
         <!-- Dependency versions -->
-        <smsc-utils.version>2.0.0-1</smsc-utils.version>
+        <smsc-utils.version>2.0.0-4</smsc-utils.version>
         <redis.clients.version>5.0.2</redis.clients.version>
         <org.jooq.version>3.15.1</org.jooq.version>
         <io.reactivex.rxjava3.version>3.0.4</io.reactivex.rxjava3.version>
