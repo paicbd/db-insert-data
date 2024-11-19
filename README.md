@@ -39,8 +39,8 @@ The service `db-insert-data`, is responsible for inserting data into a PostgreSQ
   - `THREAD_POOL_BLOCK_WHEN_EXHAUSTED`: Whether to block when the thread pool is exhausted (default: true).
 
 - **Data Processing Configuration:**
-  - `CONFIGURATION_CDR`: Redis list name for CDR (Call Data Records).
-  - `CONFIGURATION_CDR_WORKERS`: Number of worker threads for processing CDR records (default: 1).
+  - `CONFIGURATION_CDR`: Redis list name for CDR (Call Detail Records).
+  - `CONFIGURATION_CDR_WORKERS`: Number of worker threads for processing CDR record (default: 1).
   - `CONFIGURATION_CDR_BATCH_SIZE`: Batch size for Redis-to-database inserts (default: 15000).
   - `CONFIGURATION_CDR_RECORDS_TAKE`: Number of records to take from Redis (default: 1,000,000).
   - `CONFIGURATION_INTERNAL_MILLIS`: Time interval in milliseconds for scheduled tasks (default: 1000ms).
