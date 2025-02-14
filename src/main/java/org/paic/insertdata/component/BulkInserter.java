@@ -1,11 +1,13 @@
-package org.paic.insertdata.util;
+package org.paic.insertdata.component;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.paicbd.smsc.dto.UtilsRecords;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -20,8 +22,9 @@ import java.util.List;
  * The BulkInserter class is responsible for inserting data in bulk to the database using the provided JdbcTemplate.
  * It provides methods to save a bulk list of Records.SubmitSm and Records.DeliverSm objects asynchronously.
  */
-@Slf4j(topic = "bulkInserter")
-@Component
+@Slf4j
+@Repository
+@ConditionalOnProperty(name = "application.mode", havingValue = "database")
 public class BulkInserter {
     private final JdbcTemplate jdbcTemplate;
     private final Field[] cdrCachedFiles;
@@ -39,6 +42,7 @@ public class BulkInserter {
      * @param list the list of Cdr records to save
      */
     @Async
+    @Transactional
     public void saveCdrBulk(List<UtilsRecords.Cdr> list) {
         jdbcTemplate.batchUpdate(cdrSqlQuery.toString(), list, list.size(),
                 (ps, cdr) -> this.processRecordFields(ps, cdr, cdrCachedFiles)
@@ -89,7 +93,7 @@ public class BulkInserter {
      * @param pdu           the object containing the field values
      * @param cachedFiles   the array of Field objects representing the record fields
      */
-    public void processRecordFields(PreparedStatement ps, Object pdu, Field[] cachedFiles) {
+    private void processRecordFields(PreparedStatement ps, Object pdu, Field[] cachedFiles) {
         try {
             int index = 1;
             for (Field field : cachedFiles) {
@@ -110,7 +114,7 @@ public class BulkInserter {
      * @param index The index of the parameter in the prepared statement
      * @throws SQLException If an error occurs while setting the value on the PreparedStatement
      */
-    public void setValueToPreparedStatement(Object object, PreparedStatement ps, Field field, int index) throws SQLException {
+    private void setValueToPreparedStatement(Object object, PreparedStatement ps, Field field, int index) throws SQLException {
         try {
             if (!(object instanceof UtilsRecords.Cdr)) {
                 throw new IllegalArgumentException("The object must be an instance of Cdr");
@@ -131,7 +135,7 @@ public class BulkInserter {
         }
     }
 
-    public void setNullValueOrDefault(PreparedStatement ps, int index, Object value, Class<?> fieldType) throws SQLException {
+    private void setNullValueOrDefault(PreparedStatement ps, int index, Object value, Class<?> fieldType) throws SQLException {
         if (value != null && !value.equals("")) {
             setNotNullValue(ps, index, value, fieldType);
         } else {
@@ -139,7 +143,7 @@ public class BulkInserter {
         }
     }
 
-    public void setNotNullValue(PreparedStatement ps, int index, Object value, Class<?> fieldType) throws SQLException {
+    private void setNotNullValue(PreparedStatement ps, int index, Object value, Class<?> fieldType) throws SQLException {
         if (fieldType == Long.class || fieldType == long.class) {
             ps.setLong(index, Long.parseLong((String) value));
         } else if (fieldType == Integer.class || fieldType == int.class) {
@@ -151,7 +155,7 @@ public class BulkInserter {
         }
     }
 
-    public void setNullValue(PreparedStatement ps, int index, Class<?> fieldType) throws SQLException {
+    private void setNullValue(PreparedStatement ps, int index, Class<?> fieldType) throws SQLException {
         int sqlType;
         if (fieldType == Long.class || fieldType == long.class) {
             sqlType = Types.BIGINT;

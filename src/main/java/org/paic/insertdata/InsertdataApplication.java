@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-@EnableScheduling
-@EnableAsync(proxyTargetClass = true)
-@SpringBootApplication
 @Generated
+@EnableAsync
+@EnableScheduling
+@SpringBootApplication
 public class InsertdataApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(InsertdataApplication.class, args);

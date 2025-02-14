@@ -1,6 +1,5 @@
 package org.paic.insertdata.util;
 
-
 import com.paicbd.smsc.utils.Generated;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
@@ -49,9 +48,6 @@ public class AppProperties {
     @Value("${configuration.cdr-workers}")
     private int cdrWorkers;
 
-    @Value("${configuration.cdr-records-take}")
-    private int cdrSmRecordsToTake;
-
     @Value("${configuration.cdr-batch-size}")
     private int cdrBatchSize;
 
@@ -64,9 +60,18 @@ public class AppProperties {
     @Value("${application.cdr.separator}")
     private String separator;
 
-    @Value("${application.cdr.location}")
-    private String location;
-
     @Value("${jdbc.max-retries:5}")
     private int maxRetries;
+
+    @Value("${spring.datasource.url}")
+    private String datasourceUrl;
+
+    @Value("${spring.datasource.username}")
+    private String datasourceUsername;
+
+    @Value("${spring.datasource.password}")
+    private String datasourcePassword;
+
+    @Value("${spring.datasource.driver-class-name}")
+    private String datasourceDriverClassName;
 }
