@@ -15,6 +15,9 @@ import java.lang.reflect.Method;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.List;
 
@@ -122,11 +125,13 @@ public class BulkInserter {
 
             Method getter = object.getClass().getMethod(field.getName());
             Object value = getter.invoke(object);
+            log.debug("Setting value {} to PreparedStatement at index {}", value, index);
 
             switch (field.getName()) {
-                case "recordDate","submitDate","deliveryDate","dialogDuration","processingTime","remoteDialogId","localDialogId" -> setNullValueOrDefault(ps, index, value, Long.class);
+                case "recordDate","submitDate","deliveryDate" -> setNotNullValue(ps, index, value, LocalDateTime.class);
+                case "dialogDuration","processingTime","remoteDialogId","localDialogId" -> setNullValueOrDefault(ps, index, value, Long.class);
                 case "localSpc","localSsn","remoteSpc","remoteSsn","registeredDelivery","totalSegment","segmentSequence","retryNumber","routingId",
-                     "dataCoding","addrSrcTon","addrSrcNpi","addrDstDigits","addrDstTon","addrDstNpi" -> setNullValueOrDefault(ps, index, value, Integer.class);
+                     "dataCoding","addrSrcTon","addrSrcNpi","addrDstTon","addrDstNpi" -> setNullValueOrDefault(ps, index, value, int.class);
                 default -> setNullValueOrDefault(ps, index, value, String.class);
             }
         } catch (IllegalAccessException | NoSuchMethodException |
@@ -150,6 +155,9 @@ public class BulkInserter {
             ps.setInt(index, Integer.parseInt((String) value));
         } else if (fieldType == String.class) {
             ps.setString(index, (String) value);
+        } else if (fieldType == LocalDateTime.class) {
+            LocalDateTime time = Instant.ofEpochMilli(Long.parseLong((String) value)).atZone(ZoneId.systemDefault()).toLocalDateTime();
+            ps.setObject(index, time);
         } else {
             ps.setObject(index, value);
         }
