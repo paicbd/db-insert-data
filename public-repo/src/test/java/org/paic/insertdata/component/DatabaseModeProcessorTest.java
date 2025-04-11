@@ -62,7 +62,7 @@ class DatabaseModeProcessorTest {
         assertDoesNotThrow(() -> databaseModeProcessor.processCdrInDatabase());
         try (ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor()) {
             scheduledExecutorService.schedule(() -> {
-            }, 1, java.util.concurrent.TimeUnit.SECONDS);
+            }, 1, TimeUnit.SECONDS);
         }
 
         ArgumentCaptor<List<UtilsRecords.Cdr>> captor = ArgumentCaptor.forClass(List.class);
@@ -92,7 +92,7 @@ class DatabaseModeProcessorTest {
         assertDoesNotThrow(() -> databaseModeProcessor.processCdrInDatabase());
         try (ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor()) {
             scheduledExecutorService.schedule(() -> {
-            }, 1, java.util.concurrent.TimeUnit.SECONDS);
+            }, 1, TimeUnit.SECONDS);
         }
 
         verify(bulkInserter, never()).saveCdrBulk(anyList());
@@ -114,7 +114,7 @@ class DatabaseModeProcessorTest {
         databaseModeProcessor.processCdrInDatabase();
         try (ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor()) {
             scheduledExecutorService.schedule(() -> {
-            }, 1, java.util.concurrent.TimeUnit.SECONDS);
+            }, 1, TimeUnit.SECONDS);
         }
 
         verify(bulkInserter, times(3)).saveCdrBulk(anyList());
