@@ -48,7 +48,7 @@
         <!-- Java version -->
         <java.version>21</java.version>
         <!-- Dependency versions -->
-        <smsc-utils.version>2.0.0-18</smsc-utils.version>
+        <smsc-utils.version>2.0.0-16</smsc-utils.version>
         <redis.clients.version>5.0.2</redis.clients.version>
         <postgresql.version>42.7.2</postgresql.version>
         <webflux.version>3.4.2</webflux.version>
