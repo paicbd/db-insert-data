@@ -1,0 +1,112 @@
+2025-06-13 11:51:44,835 -> CREATE TABLE IF NOT EXISTS cdr_20250613 PARTITION OF cdr FOR VALUES FROM (TIMESTAMP '2025-06-13 00:00:00') TO (TIMESTAMP '2025-06-14 00:00:00');
+CREATE TABLE
+2025-06-13 11:51:44,910 -> Index idx_cdr_20250613_message_type: CREATE INDEX IF NOT EXISTS idx_cdr_20250613_message_type ON cdr_20250613 (message_type);
+CREATE INDEX
+2025-06-13 11:51:44,959 -> Index idx_cdr_20250613_status: CREATE INDEX IF NOT EXISTS idx_cdr_20250613_status ON cdr_20250613 (status);
+CREATE INDEX
+2025-06-13 11:51:45,011 -> Index idx_cdr_20250613_origination_type: CREATE INDEX IF NOT EXISTS idx_cdr_20250613_origination_type ON cdr_20250613 (origination_type);
+CREATE INDEX
+2025-06-13 11:51:45,066 -> Index idx_cdr_20250613_origination_protocol: CREATE INDEX IF NOT EXISTS idx_cdr_20250613_origination_protocol ON cdr_20250613 (origination_protocol);
+CREATE INDEX
+2025-06-13 11:51:45,121 -> Index idx_cdr_20250613_destination_protocol: CREATE INDEX IF NOT EXISTS idx_cdr_20250613_destination_protocol ON cdr_20250613 (destination_protocol);
+CREATE INDEX
+2025-06-13 11:51:45,175 -> Index idx_cdr_20250613_destination_type: CREATE INDEX IF NOT EXISTS idx_cdr_20250613_destination_type ON cdr_20250613 (destination_type);
+CREATE INDEX
+2025-06-13 11:51:45,230 -> Index idx_cdr_20250613_addr_src_digits: CREATE INDEX IF NOT EXISTS idx_cdr_20250613_addr_src_digits ON cdr_20250613 (addr_src_digits);
+CREATE INDEX
+2025-06-13 11:51:45,294 -> Index idx_cdr_20250613_addr_dst_digits: CREATE INDEX IF NOT EXISTS idx_cdr_20250613_addr_dst_digits ON cdr_20250613 (addr_dst_digits);
+CREATE INDEX
+2025-06-13 11:51:45,355 -> Index idx_cdr_20250613_origination_network_id: CREATE INDEX IF NOT EXISTS idx_cdr_20250613_origination_network_id ON cdr_20250613 (origination_network_id);
+CREATE INDEX
+2025-06-13 11:51:45,405 -> Index idx_cdr_20250613_destination_network_id: CREATE INDEX IF NOT EXISTS idx_cdr_20250613_destination_network_id ON cdr_20250613 (destination_network_id);
+CREATE INDEX
+2025-06-13 11:51:45,454 -> Index idx_cdr_20250613_registered_delivery: CREATE INDEX IF NOT EXISTS idx_cdr_20250613_registered_delivery ON cdr_20250613 (registered_delivery);
+CREATE INDEX
+2025-06-13 11:51:45,502 -> Index idx_cdr_20250613_broadcast_id: CREATE INDEX IF NOT EXISTS idx_cdr_20250613_broadcast_id ON cdr_20250613 (broadcast_id);
+CREATE INDEX
+2025-06-13 11:51:45,541 -> DROP TABLE IF EXISTS cdr_20250606;
+DROP TABLE
+2025-06-13 11:51:52,923 -> CREATE TABLE IF NOT EXISTS cdr_20250614 PARTITION OF cdr FOR VALUES FROM (TIMESTAMP '2025-06-14 00:00:00') TO (TIMESTAMP '2025-06-15 00:00:00');
+CREATE TABLE
+2025-06-13 11:51:52,971 -> Index idx_cdr_20250614_message_type: CREATE INDEX IF NOT EXISTS idx_cdr_20250614_message_type ON cdr_20250614 (message_type);
+CREATE INDEX
+2025-06-13 11:51:53,019 -> Index idx_cdr_20250614_status: CREATE INDEX IF NOT EXISTS idx_cdr_20250614_status ON cdr_20250614 (status);
+CREATE INDEX
+2025-06-13 11:51:53,068 -> Index idx_cdr_20250614_origination_type: CREATE INDEX IF NOT EXISTS idx_cdr_20250614_origination_type ON cdr_20250614 (origination_type);
+CREATE INDEX
+2025-06-13 11:51:53,117 -> Index idx_cdr_20250614_origination_protocol: CREATE INDEX IF NOT EXISTS idx_cdr_20250614_origination_protocol ON cdr_20250614 (origination_protocol);
+CREATE INDEX
+2025-06-13 11:51:53,167 -> Index idx_cdr_20250614_destination_protocol: CREATE INDEX IF NOT EXISTS idx_cdr_20250614_destination_protocol ON cdr_20250614 (destination_protocol);
+CREATE INDEX
+2025-06-13 11:51:53,218 -> Index idx_cdr_20250614_destination_type: CREATE INDEX IF NOT EXISTS idx_cdr_20250614_destination_type ON cdr_20250614 (destination_type);
+CREATE INDEX
+2025-06-13 11:51:53,267 -> Index idx_cdr_20250614_addr_src_digits: CREATE INDEX IF NOT EXISTS idx_cdr_20250614_addr_src_digits ON cdr_20250614 (addr_src_digits);
+CREATE INDEX
+2025-06-13 11:51:53,315 -> Index idx_cdr_20250614_addr_dst_digits: CREATE INDEX IF NOT EXISTS idx_cdr_20250614_addr_dst_digits ON cdr_20250614 (addr_dst_digits);
+CREATE INDEX
+2025-06-13 11:51:53,363 -> Index idx_cdr_20250614_origination_network_id: CREATE INDEX IF NOT EXISTS idx_cdr_20250614_origination_network_id ON cdr_20250614 (origination_network_id);
+CREATE INDEX
+2025-06-13 11:51:53,413 -> Index idx_cdr_20250614_destination_network_id: CREATE INDEX IF NOT EXISTS idx_cdr_20250614_destination_network_id ON cdr_20250614 (destination_network_id);
+CREATE INDEX
+2025-06-13 11:51:53,461 -> Index idx_cdr_20250614_registered_delivery: CREATE INDEX IF NOT EXISTS idx_cdr_20250614_registered_delivery ON cdr_20250614 (registered_delivery);
+CREATE INDEX
+2025-06-13 11:51:53,512 -> Index idx_cdr_20250614_broadcast_id: CREATE INDEX IF NOT EXISTS idx_cdr_20250614_broadcast_id ON cdr_20250614 (broadcast_id);
+CREATE INDEX
+2025-06-13 11:51:53,552 -> DROP TABLE IF EXISTS cdr_20250606;
+DROP TABLE
+2025-06-13 11:52:00,173 -> CREATE TABLE IF NOT EXISTS cdr_20250615 PARTITION OF cdr FOR VALUES FROM (TIMESTAMP '2025-06-15 00:00:00') TO (TIMESTAMP '2025-06-16 00:00:00');
+CREATE TABLE
+2025-06-13 11:52:00,224 -> Index idx_cdr_20250615_message_type: CREATE INDEX IF NOT EXISTS idx_cdr_20250615_message_type ON cdr_20250615 (message_type);
+CREATE INDEX
+2025-06-13 11:52:00,278 -> Index idx_cdr_20250615_status: CREATE INDEX IF NOT EXISTS idx_cdr_20250615_status ON cdr_20250615 (status);
+CREATE INDEX
+2025-06-13 11:52:00,326 -> Index idx_cdr_20250615_origination_type: CREATE INDEX IF NOT EXISTS idx_cdr_20250615_origination_type ON cdr_20250615 (origination_type);
+CREATE INDEX
+2025-06-13 11:52:00,375 -> Index idx_cdr_20250615_origination_protocol: CREATE INDEX IF NOT EXISTS idx_cdr_20250615_origination_protocol ON cdr_20250615 (origination_protocol);
+CREATE INDEX
+2025-06-13 11:52:00,424 -> Index idx_cdr_20250615_destination_protocol: CREATE INDEX IF NOT EXISTS idx_cdr_20250615_destination_protocol ON cdr_20250615 (destination_protocol);
+CREATE INDEX
+2025-06-13 11:52:00,473 -> Index idx_cdr_20250615_destination_type: CREATE INDEX IF NOT EXISTS idx_cdr_20250615_destination_type ON cdr_20250615 (destination_type);
+CREATE INDEX
+2025-06-13 11:52:00,524 -> Index idx_cdr_20250615_addr_src_digits: CREATE INDEX IF NOT EXISTS idx_cdr_20250615_addr_src_digits ON cdr_20250615 (addr_src_digits);
+CREATE INDEX
+2025-06-13 11:52:00,572 -> Index idx_cdr_20250615_addr_dst_digits: CREATE INDEX IF NOT EXISTS idx_cdr_20250615_addr_dst_digits ON cdr_20250615 (addr_dst_digits);
+CREATE INDEX
+2025-06-13 11:52:00,620 -> Index idx_cdr_20250615_origination_network_id: CREATE INDEX IF NOT EXISTS idx_cdr_20250615_origination_network_id ON cdr_20250615 (origination_network_id);
+CREATE INDEX
+2025-06-13 11:52:00,669 -> Index idx_cdr_20250615_destination_network_id: CREATE INDEX IF NOT EXISTS idx_cdr_20250615_destination_network_id ON cdr_20250615 (destination_network_id);
+CREATE INDEX
+2025-06-13 11:52:00,718 -> Index idx_cdr_20250615_registered_delivery: CREATE INDEX IF NOT EXISTS idx_cdr_20250615_registered_delivery ON cdr_20250615 (registered_delivery);
+CREATE INDEX
+2025-06-13 11:52:00,769 -> Index idx_cdr_20250615_broadcast_id: CREATE INDEX IF NOT EXISTS idx_cdr_20250615_broadcast_id ON cdr_20250615 (broadcast_id);
+CREATE INDEX
+2025-06-13 11:52:00,808 -> DROP TABLE IF EXISTS cdr_20250606;
+DROP TABLE
+2025-06-13 11:52:10,890 -> CREATE TABLE IF NOT EXISTS cdr_20250616 PARTITION OF cdr FOR VALUES FROM (TIMESTAMP '2025-06-16 00:00:00') TO (TIMESTAMP '2025-06-17 00:00:00');
+CREATE TABLE
+2025-06-13 11:52:10,941 -> Index idx_cdr_20250616_message_type: CREATE INDEX IF NOT EXISTS idx_cdr_20250616_message_type ON cdr_20250616 (message_type);
+CREATE INDEX
+2025-06-13 11:52:10,989 -> Index idx_cdr_20250616_status: CREATE INDEX IF NOT EXISTS idx_cdr_20250616_status ON cdr_20250616 (status);
+CREATE INDEX
+2025-06-13 11:52:11,037 -> Index idx_cdr_20250616_origination_type: CREATE INDEX IF NOT EXISTS idx_cdr_20250616_origination_type ON cdr_20250616 (origination_type);
+CREATE INDEX
+2025-06-13 11:52:11,088 -> Index idx_cdr_20250616_origination_protocol: CREATE INDEX IF NOT EXISTS idx_cdr_20250616_origination_protocol ON cdr_20250616 (origination_protocol);
+CREATE INDEX
+2025-06-13 11:52:11,135 -> Index idx_cdr_20250616_destination_protocol: CREATE INDEX IF NOT EXISTS idx_cdr_20250616_destination_protocol ON cdr_20250616 (destination_protocol);
+CREATE INDEX
+2025-06-13 11:52:11,184 -> Index idx_cdr_20250616_destination_type: CREATE INDEX IF NOT EXISTS idx_cdr_20250616_destination_type ON cdr_20250616 (destination_type);
+CREATE INDEX
+2025-06-13 11:52:11,232 -> Index idx_cdr_20250616_addr_src_digits: CREATE INDEX IF NOT EXISTS idx_cdr_20250616_addr_src_digits ON cdr_20250616 (addr_src_digits);
+CREATE INDEX
+2025-06-13 11:52:11,281 -> Index idx_cdr_20250616_addr_dst_digits: CREATE INDEX IF NOT EXISTS idx_cdr_20250616_addr_dst_digits ON cdr_20250616 (addr_dst_digits);
+CREATE INDEX
+2025-06-13 11:52:11,329 -> Index idx_cdr_20250616_origination_network_id: CREATE INDEX IF NOT EXISTS idx_cdr_20250616_origination_network_id ON cdr_20250616 (origination_network_id);
+CREATE INDEX
+2025-06-13 11:52:11,377 -> Index idx_cdr_20250616_destination_network_id: CREATE INDEX IF NOT EXISTS idx_cdr_20250616_destination_network_id ON cdr_20250616 (destination_network_id);
+CREATE INDEX
+2025-06-13 11:52:11,426 -> Index idx_cdr_20250616_registered_delivery: CREATE INDEX IF NOT EXISTS idx_cdr_20250616_registered_delivery ON cdr_20250616 (registered_delivery);
+CREATE INDEX
+2025-06-13 11:52:11,476 -> Index idx_cdr_20250616_broadcast_id: CREATE INDEX IF NOT EXISTS idx_cdr_20250616_broadcast_id ON cdr_20250616 (broadcast_id);
+CREATE INDEX
+2025-06-13 11:52:11,515 -> DROP TABLE IF EXISTS cdr_20250606;
+DROP TABLE
